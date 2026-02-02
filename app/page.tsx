@@ -1,6 +1,7 @@
 import Hero from "@/components/landing/Hero";
 import ProblemSection from "@/components/landing/ProblemSection";
 import SolutionTimeline from "@/components/landing/SolutionTimeline";
+import FeaturesGrid from "@/components/landing/FeaturesGrid";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <ProblemSection />
       <SolutionTimeline />
+      <FeaturesGrid />
     </div>
   );
 }

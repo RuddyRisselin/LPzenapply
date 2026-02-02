@@ -375,7 +375,7 @@ export default function SolutionTimeline() {
           <motion.button
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.98 }}
-            className="px-8 py-4 bg-gradient-to-r from-[#FF69B4] to-pink-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+            className="px-12 py-5 bg-gradient-to-r from-[#FF69B4] to-pink-500 text-white text-lg font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
             style={{
               boxShadow: '0 10px 30px rgba(255, 105, 180, 0.3)',
             }}
