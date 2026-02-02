@@ -14,6 +14,18 @@
   --color-zen-gray: var(--zen-gray);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Orbital animations */
+  --animate-orbit: orbit var(--duration) linear infinite;
+
+  @keyframes orbit {
+    from {
+      transform: rotate(0deg) translateX(var(--radius)) rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg) translateX(var(--radius)) rotate(-360deg);
+    }
+  }
 }
 
 body {
