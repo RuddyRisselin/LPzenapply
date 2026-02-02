@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useLayoutEffect, useState } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
@@ -20,20 +21,10 @@ if (typeof window !== 'undefined') {
 
 const features = [
   {
-    icon: FileText,
-    title: 'Lettres de Motivation IA',
-    visual: 'document',
-    points: [
-      'Génération en 3 secondes',
-      'Adaptation au secteur',
-      'Mots-clés optimisés',
-      'Ton professionnel et humain',
-    ],
-  },
-  {
     icon: Target,
     title: 'Auto-Apply Multi-Plateformes',
     visual: 'platforms',
+    screenshot: '/screenshots/extention.png',
     points: [
       'Détection d\'offres 24/7',
       'Évitement des doublons',
@@ -45,6 +36,7 @@ const features = [
     icon: Mail,
     title: 'Relances Auto Intelligentes',
     visual: 'email',
+    screenshot: '/screenshots/relance.png',
     points: [
       'Relance automatique après 7 jours',
       'Message personnalisé',
@@ -53,20 +45,10 @@ const features = [
     ],
   },
   {
-    icon: BarChart3,
-    title: 'Dashboard & Analytics',
-    visual: 'dashboard',
-    points: [
-      'Vue d\'ensemble immédiate',
-      'Taux de réponse par secteur',
-      'Suggestions d\'amélioration',
-      'Alertes temps réel',
-    ],
-  },
-  {
     icon: MapPin,
     title: 'Candidatures Spontanées Ciblées',
     visual: 'map',
+    screenshot: '/screenshots/companies.png',
     points: [
       'Identification par profil',
       'Base de 50 000 entreprises',
@@ -75,17 +57,162 @@ const features = [
     ],
   },
   {
-    icon: Smartphone,
-    title: 'Suivi Centralisé',
-    visual: 'mobile',
+    icon: BarChart3,
+    title: 'Dashboard & Analytics',
+    visual: 'dashboard',
+    screenshot: '/screenshots/Dashboard.png',
     points: [
-      'Application mobile dédiée',
-      'Notifications push',
-      'Synchronisation automatique',
-      'Interface épurée',
+      'Vue d\'ensemble immédiate',
+      'Taux de réponse par secteur',
+      'Suggestions d\'amélioration',
+      'Alertes temps réel',
+    ],
+  },
+  {
+    icon: FileText,
+    title: 'Lettres de Motivation IA',
+    visual: 'document',
+    screenshot: '/screenshots/coverletter.png',
+    points: [
+      'Génération en 3 secondes',
+      'Adaptation au secteur',
+      'Mots-clés optimisés',
+      'Ton professionnel et humain',
     ],
   },
 ];
+
+// Feature Card Component with mouse-following shimmer effect
+interface FeatureCardProps {
+  feature: typeof features[0];
+  index: number;
+}
+
+function FeatureCard({ feature, index }: FeatureCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { stiffness: 150, damping: 20 });
+  const springY = useSpring(mouseY, { stiffness: 150, damping: 20 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
+  const visualLabels: Record<string, string> = {
+    document: 'Document Preview',
+    platforms: 'Multi-Platform Integration',
+    email: 'Email Automation',
+    dashboard: 'Analytics Dashboard',
+    map: 'Geographic Targeting',
+    mobile: 'Mobile Experience',
+  };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      className="relative w-full max-w-4xl mx-auto"
+    >
+      {/* Glassmorphism card with backdrop blur */}
+      <div className="relative bg-white/90 backdrop-blur-xl rounded-[32px] border border-zen-rose/10 shadow-2xl p-6 sm:p-10 h-full">
+        {/* Mouse-following radial gradient shimmer */}
+        <motion.div
+          className="pointer-events-none absolute inset-0 rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          style={{
+            background: `radial-gradient(600px circle at ${springX}px ${springY}px, rgba(255, 105, 180, 0.1), transparent 40%)`,
+          }}
+        />
+
+        {/* Content */}
+        <div className="relative z-10 flex flex-col h-full">
+          {/* Title Section */}
+          <div className="text-center mb-6">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
+              {feature.title}
+            </h3>
+          </div>
+
+          {/* Screenshot or Platform Logos */}
+          <div className="mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100/50 border border-gray-200/30 backdrop-blur-sm h-[240px]">
+            {index === 0 ? (
+              // Platform logos for Auto-Apply Multi-Plateformes
+              <div className="w-full h-full flex items-center justify-center gap-8 px-6">
+                {/* LinkedIn Logo */}
+                <div className="flex flex-col items-center gap-3">
+                  <div className="w-20 h-20 bg-[#0A66C2] rounded-xl flex items-center justify-center shadow-lg">
+                    <svg className="w-12 h-12" viewBox="0 0 24 24" fill="white">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  </div>
+                  <span className="text-sm font-semibold text-gray-700">LinkedIn</span>
+                </div>
+
+                {/* Indeed Logo */}
+                <div className="flex flex-col items-center gap-3">
+                  <div className="w-20 h-20 bg-white rounded-xl flex items-center justify-center shadow-lg border border-gray-100">
+                    <svg className="w-16 h-16" viewBox="0 0 200 200" fill="none">
+                      <text x="50%" y="50%" dominantBaseline="middle" textAnchor="middle" fill="#2557a7" fontSize="48" fontWeight="bold" fontFamily="Arial, sans-serif">
+                        indeed
+                      </text>
+                    </svg>
+                  </div>
+                  <span className="text-sm font-semibold text-gray-700">Indeed</span>
+                </div>
+
+                {/* HelloWork Logo */}
+                <div className="flex flex-col items-center gap-3">
+                  <div className="w-20 h-20 bg-white rounded-xl flex items-center justify-center shadow-lg border border-gray-100 p-2">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/commons/0/01/Logo_Hellowork.svg"
+                      alt="HelloWork"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <span className="text-sm font-semibold text-gray-700">HelloWork</span>
+                </div>
+              </div>
+            ) : (
+              // Regular screenshot for other cards
+              <img
+                src={feature.screenshot}
+                alt={feature.title}
+                className="w-full h-full object-cover"
+              />
+            )}
+          </div>
+
+          {/* Feature Points */}
+          <ul className="space-y-3">
+            {feature.points.map((point, pointIndex) => (
+              <li
+                key={pointIndex}
+                className="flex items-start gap-3 text-sm sm:text-base text-zen-gray"
+              >
+                <Check className="w-5 h-5 text-zen-rose flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                <span className="leading-relaxed">{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Card Number Indicator */}
+        <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-gradient-to-br from-zen-rose to-pink-500 flex items-center justify-center shadow-lg">
+          <span className="text-lg font-bold text-white">{index + 1}</span>
+        </div>
+
+        {/* Subtle shimmer border accent */}
+        <div className="absolute inset-0 rounded-[32px] bg-gradient-to-br from-zen-rose/5 via-transparent to-zen-rose/5 pointer-events-none" />
+      </div>
+    </motion.div>
+  );
+}
 
 export default function FeaturesGrid() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -104,16 +231,16 @@ export default function FeaturesGrid() {
       const cards = gsap.utils.toArray<HTMLElement>('.stack-card');
       if (cards.length === 0) return;
 
-      // Set initial positions: all cards stacked on the right
+      // Set initial positions: all cards stacked in center
       gsap.set(cards, {
         x: 0,
         y: 0,
         scale: 0.9,
-        opacity: 0.3,
+        opacity: 0.5,
         zIndex: (i) => cards.length - i,
       });
 
-      // Set first card as active
+      // Set first card as active and fully visible
       gsap.set(cards[0], {
         scale: 1,
         opacity: 1,
@@ -125,8 +252,8 @@ export default function FeaturesGrid() {
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: () => `+=${window.innerHeight * cards.length * 1.0}`, // Reduced scroll distance
-          scrub: 0.8, // More responsive
+          end: () => `+=${window.innerHeight * cards.length * 1.2}`,
+          scrub: 0.8,
           pin: true,
           anticipatePin: 1,
           snap: {
@@ -138,32 +265,31 @@ export default function FeaturesGrid() {
         },
       });
 
-      // Animate each card with proper spacing between transitions
+      // Animate each card with scale and fade effects
       cards.forEach((card, index) => {
-        if (index === cards.length - 1) return; // Skip last card (it just stays)
+        if (index === cards.length - 1) return;
 
-        // Each card gets: [display time] → [transition time]
-        const displayDuration = 0.7; // Time card is fully visible
-        const transitionDuration = 0.3; // Time for the transition itself
+        const displayDuration = 0.7;
+        const transitionDuration = 0.3;
         const cardCycle = displayDuration + transitionDuration;
 
         const startTime = index * cardCycle;
         const transitionStart = startTime + displayDuration;
 
-        // Current card fades out AFTER display time
+        // Current card scales down and fades out
         tl.to(
           card,
           {
-            x: -200,
+            x: -100,
             opacity: 0,
-            scale: 0.8,
+            scale: 0.9,
             ease: 'power2.inOut',
             duration: transitionDuration,
           },
           transitionStart
         );
 
-        // Next card comes to center at the same time
+        // Next card scales up and fades in
         if (index < cards.length - 1) {
           tl.to(
             cards[index + 1],
@@ -186,104 +312,49 @@ export default function FeaturesGrid() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white overflow-hidden min-h-screen flex items-center justify-center"
+      className="relative bg-white overflow-hidden min-h-screen flex flex-col"
     >
-      {/* Decorative Background */}
+      {/* Subtle Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-pink-100/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-purple-100/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-zen-rose/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/3 w-[500px] h-[500px] bg-purple-100/10 rounded-full blur-3xl" />
       </div>
 
-      {/* Header - Stays visible */}
-      <div className="absolute top-0 left-0 right-0 pt-16 pb-8 px-4 sm:px-6 lg:px-8 z-20 pointer-events-none">
+      {/* Header with increased vertical spacing */}
+      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 z-20 pointer-events-none">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             Ce que ZenApply fait pour vous
           </h2>
-          <p className="text-lg text-[#808080] max-w-2xl mx-auto">
+          <p className="text-xl text-zen-gray max-w-3xl mx-auto">
             Une automatisation complète pour rester serein durant votre recherche.
           </p>
         </div>
       </div>
 
-      {/* Stacked Cards Container */}
+      {/* Stacked Cards Container - Large and Centered */}
       <div
         ref={cardsContainerRef}
-        className="relative z-10 w-full max-w-2xl mx-auto px-4 sm:px-6"
+        className="relative z-10 flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8"
         style={{ opacity: mounted ? 1 : 0 }}
       >
-        {features.map((feature, index) => (
-          <div
-            key={index}
-            className="stack-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full"
-          >
-            <div className="relative bg-white rounded-3xl border border-[#F3F4F6] shadow-2xl p-8 sm:p-10 transition-all duration-300 group">
-              {/* Glassmorphism Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50/20 to-transparent rounded-3xl pointer-events-none" />
-
-              {/* Active Card Glow Effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#FF69B4]/30 to-pink-300/30 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* Content */}
-              <div className="relative z-10">
-                {/* Icon & Title */}
-                <div className="text-center mb-8">
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-gradient-to-br from-[#FF69B4]/10 to-pink-200/10 mb-6">
-                    <feature.icon className="w-10 h-10 text-[#FF69B4]" strokeWidth={2} />
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
-                    {feature.title}
-                  </h3>
-                </div>
-
-                {/* Visual Placeholder */}
-                <div className="mb-8 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200/50 p-8 h-48 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/80 mb-3">
-                      <feature.icon className="w-10 h-10 text-[#FF69B4]/40" strokeWidth={1.5} />
-                    </div>
-                    <p className="text-sm text-gray-400 font-medium uppercase tracking-wide">
-                      {feature.visual === 'document' && 'Document Preview'}
-                      {feature.visual === 'platforms' && 'LinkedIn · Indeed · HelloWork'}
-                      {feature.visual === 'email' && 'Email Mockup'}
-                      {feature.visual === 'dashboard' && 'Analytics Dashboard'}
-                      {feature.visual === 'map' && 'Location Map'}
-                      {feature.visual === 'mobile' && 'iOS / Android App'}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Feature Points */}
-                <ul className="space-y-4">
-                  {feature.points.map((point, pointIndex) => (
-                    <li
-                      key={pointIndex}
-                      className="flex items-start gap-3 text-base text-[#808080]"
-                    >
-                      <Check className="w-6 h-6 text-[#FF69B4] flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                      <span className="leading-relaxed">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Card Number Indicator */}
-              <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-gradient-to-br from-[#FF69B4] to-pink-500 flex items-center justify-center shadow-lg">
-                <span className="text-lg font-bold text-white">{index + 1}</span>
-              </div>
-
-              {/* Decorative Corner Accent */}
-              <div className="absolute -bottom-1 -right-1 w-24 h-24 bg-gradient-to-br from-transparent via-pink-50/50 to-pink-100/50 rounded-br-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="relative w-full max-w-4xl mx-auto h-[500px] sm:h-[550px]">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="stack-card absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95vw] sm:w-full group"
+            >
+              <FeatureCard feature={feature} index={index} />
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 text-center pointer-events-none">
-        <p className="text-sm text-[#808080] mb-2">Scroll pour découvrir</p>
-        <div className="w-6 h-10 border-2 border-[#808080]/30 rounded-full mx-auto flex items-start justify-center p-2">
-          <div className="w-1.5 h-3 bg-[#FF69B4] rounded-full animate-bounce" />
+      {/* Minimal Scroll Indicator */}
+      <div className="relative bottom-0 pb-12 z-20 text-center pointer-events-none">
+        <p className="text-sm text-zen-gray/70 mb-3 tracking-wide">Scroll pour découvrir</p>
+        <div className="w-6 h-10 border-2 border-zen-gray/20 rounded-full mx-auto flex items-start justify-center p-2">
+          <div className="w-1.5 h-3 bg-zen-rose rounded-full animate-bounce" />
         </div>
       </div>
     </section>

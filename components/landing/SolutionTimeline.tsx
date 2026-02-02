@@ -268,8 +268,17 @@ export default function SolutionTimeline() {
                 transform: 'translateY(-50%)'
               }}
             >
-              {/* Background line (static gray track) */}
-              <div className="absolute inset-0 bg-[#E5E7EB] rounded-full" />
+              {/* Background line that transitions from gray to pink based on scroll progress */}
+              <motion.div
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background: useTransform(
+                    springProgress,
+                    [0, 25, 50, 75, 100],
+                    ['#E5E7EB', '#F0D4E0', '#F5B8D0', '#FA9CC0', '#FF69B4']
+                  ),
+                }}
+              />
 
               {/* Liquid Progress Line (Zen Rose with spring animation) */}
               <motion.div
