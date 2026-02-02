@@ -254,10 +254,10 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
           transition={{ duration: 2, ease: 'easeOut' }}
-          className="absolute top-0 left-0 w-[500px] h-[900px]"
+          className="absolute top-0 left-0 w-[250px] sm:w-[350px] md:w-[450px] lg:w-[500px] h-[500px] sm:h-[700px] md:h-[800px] lg:h-[900px]"
           style={{
             background: 'radial-gradient(ellipse 25% 100% at 20% 0%, rgba(255, 105, 180, 0.25) 0%, rgba(255, 105, 180, 0.15) 30%, rgba(255, 105, 180, 0.05) 60%, transparent 100%)',
-            filter: 'blur(30px)',
+            filter: 'blur(20px) sm:blur(25px) md:blur(30px)',
             transform: 'rotate(8deg)',
             transformOrigin: 'top left',
           }}
@@ -268,10 +268,10 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.6 }}
           transition={{ duration: 2, ease: 'easeOut' }}
-          className="absolute top-0 left-0 w-[400px] h-[800px]"
+          className="absolute top-0 left-0 w-[200px] sm:w-[280px] md:w-[360px] lg:w-[400px] h-[450px] sm:w-[600px] md:h-[700px] lg:h-[800px]"
           style={{
             background: 'radial-gradient(ellipse 20% 100% at 15% 0%, rgba(255, 105, 180, 0.3) 0%, rgba(255, 105, 180, 0.1) 40%, transparent 80%)',
-            filter: 'blur(20px)',
+            filter: 'blur(15px) sm:blur(18px) md:blur(20px)',
             transform: 'rotate(8deg)',
             transformOrigin: 'top left',
           }}
@@ -289,7 +289,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="absolute top-6 left-6 w-12 h-12 bg-[#FF69B4] rounded-full blur-xl opacity-40"
+          className="absolute top-3 left-3 sm:top-4 sm:left-4 md:top-5 md:left-5 lg:top-6 lg:left-6 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#FF69B4] rounded-full blur-lg sm:blur-xl opacity-40"
         />
 
         {/* Top Right Spotlight - Realistic projector cone */}
@@ -297,10 +297,10 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
           transition={{ duration: 2, ease: 'easeOut', delay: 0.3 }}
-          className="absolute top-0 right-0 w-[500px] h-[900px]"
+          className="absolute top-0 right-0 w-[250px] sm:w-[350px] md:w-[450px] lg:w-[500px] h-[500px] sm:h-[700px] md:h-[800px] lg:h-[900px]"
           style={{
             background: 'radial-gradient(ellipse 25% 100% at 80% 0%, rgba(255, 105, 180, 0.25) 0%, rgba(255, 105, 180, 0.15) 30%, rgba(255, 105, 180, 0.05) 60%, transparent 100%)',
-            filter: 'blur(30px)',
+            filter: 'blur(20px) sm:blur(25px) md:blur(30px)',
             transform: 'rotate(-8deg)',
             transformOrigin: 'top right',
           }}
@@ -311,10 +311,10 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.6 }}
           transition={{ duration: 2, ease: 'easeOut', delay: 0.3 }}
-          className="absolute top-0 right-0 w-[400px] h-[800px]"
+          className="absolute top-0 right-0 w-[200px] sm:w-[280px] md:w-[360px] lg:w-[400px] h-[450px] sm:h-[600px] md:h-[700px] lg:h-[800px]"
           style={{
             background: 'radial-gradient(ellipse 20% 100% at 85% 0%, rgba(255, 105, 180, 0.3) 0%, rgba(255, 105, 180, 0.1) 40%, transparent 80%)',
-            filter: 'blur(20px)',
+            filter: 'blur(15px) sm:blur(18px) md:blur(20px)',
             transform: 'rotate(-8deg)',
             transformOrigin: 'top right',
           }}
@@ -333,7 +333,7 @@ const Hero = () => {
             ease: 'easeInOut',
             delay: 0.5,
           }}
-          className="absolute top-6 right-6 w-12 h-12 bg-[#FF69B4] rounded-full blur-xl opacity-40"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 md:top-5 md:right-5 lg:top-6 lg:right-6 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 bg-[#FF69B4] rounded-full blur-lg sm:blur-xl opacity-40"
         />
 
         {/* Additional beam layers for more depth - Left */}
@@ -342,6 +342,24 @@ const Hero = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.8, ease: 'easeOut', delay: 0.3 }}
           className="absolute top-0 left-0"
+          style={{
+            width: '0',
+            height: '0',
+            borderLeft: '60px solid transparent',
+            borderRight: '120px solid transparent',
+            borderTop: '500px solid rgba(255, 105, 180, 0.2)',
+            filter: 'blur(30px)',
+            transformOrigin: 'top left',
+            transform: 'rotate(18deg) translateX(-15px)',
+          }}
+        />
+
+        {/* Additional beam layers for more depth - Left (Desktop) */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.8, ease: 'easeOut', delay: 0.3 }}
+          className="hidden md:block absolute top-0 left-0"
           style={{
             width: '0',
             height: '0',
@@ -363,6 +381,24 @@ const Hero = () => {
           style={{
             width: '0',
             height: '0',
+            borderRight: '60px solid transparent',
+            borderLeft: '120px solid transparent',
+            borderTop: '500px solid rgba(255, 105, 180, 0.2)',
+            filter: 'blur(30px)',
+            transformOrigin: 'top right',
+            transform: 'rotate(-18deg) translateX(15px)',
+          }}
+        />
+
+        {/* Additional beam layers for more depth - Right (Desktop) */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.8, ease: 'easeOut', delay: 0.4 }}
+          className="hidden md:block absolute top-0 right-0"
+          style={{
+            width: '0',
+            height: '0',
             borderRight: '120px solid transparent',
             borderLeft: '250px solid transparent',
             borderTop: '900px solid rgba(255, 105, 180, 0.2)',
@@ -377,7 +413,7 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: 'easeOut' }}
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#FF69B4]/5 rounded-full blur-3xl"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] sm:w-[600px] md:w-[700px] lg:w-[800px] h-[400px] sm:h-[600px] md:h-[700px] lg:h-[800px] bg-[#FF69B4]/5 rounded-full blur-2xl sm:blur-3xl"
         />
 
         {/* Left diagonal light beam */}
@@ -385,7 +421,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 0.6, x: 0 }}
           transition={{ duration: 1.5, delay: 0.3 }}
-          className="absolute top-20 -left-40 w-[600px] h-[400px] bg-gradient-to-br from-[#FF69B4]/10 via-transparent to-transparent rotate-45 blur-2xl"
+          className="absolute top-10 sm:top-16 md:top-20 -left-20 sm:-left-30 md:-left-40 w-[300px] sm:w-[450px] md:w-[550px] lg:w-[600px] h-[200px] sm:h-[300px] md:h-[350px] lg:h-[400px] bg-gradient-to-br from-[#FF69B4]/10 via-transparent to-transparent rotate-45 blur-xl sm:blur-2xl"
         />
 
         {/* Right diagonal light beam */}
@@ -393,7 +429,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 0.6, x: 0 }}
           transition={{ duration: 1.5, delay: 0.3 }}
-          className="absolute top-20 -right-40 w-[600px] h-[400px] bg-gradient-to-bl from-[#FF69B4]/10 via-transparent to-transparent -rotate-45 blur-2xl"
+          className="absolute top-10 sm:top-16 md:top-20 -right-20 sm:-right-30 md:-right-40 w-[300px] sm:w-[450px] md:w-[550px] lg:w-[600px] h-[200px] sm:h-[300px] md:h-[350px] lg:h-[400px] bg-gradient-to-bl from-[#FF69B4]/10 via-transparent to-transparent -rotate-45 blur-xl sm:blur-2xl"
         />
 
         {/* Center glow behind title */}
@@ -401,7 +437,7 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 0.4, scale: 1 }}
           transition={{ duration: 2, delay: 0.5 }}
-          className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[1000px] h-[300px] bg-gradient-radial from-[#FF69B4]/15 via-[#FF69B4]/5 to-transparent blur-3xl"
+          className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] sm:w-[700px] md:w-[850px] lg:w-[1000px] h-[200px] sm:h-[250px] md:h-[280px] lg:h-[300px] bg-gradient-radial from-[#FF69B4]/15 via-[#FF69B4]/5 to-transparent blur-2xl sm:blur-3xl"
         />
       </div>
 
@@ -413,6 +449,17 @@ const Hero = () => {
       >
         {/* Centered Content Layout */}
         <div className="flex flex-col items-center text-center space-y-12">
+          {/* Nouveauté Badge */}
+          <motion.div
+            variants={itemVariants}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#FF69B4]/10 to-[#FF1493]/10 border border-[#FF69B4]/30 rounded-full"
+          >
+            <span className="inline-block w-2 h-2 bg-[#FF69B4] rounded-full animate-pulse"></span>
+            <span className="text-sm font-semibold bg-gradient-to-r from-[#FF69B4] to-[#FF1493] bg-clip-text text-transparent">
+              Nouveauté : fonctionne avec Indeed et HelloWork
+            </span>
+          </motion.div>
+
           {/* Headline - Centered */}
           <motion.div variants={itemVariants} className="space-y-6 max-w-5xl px-4 w-full">
             <motion.h1
@@ -471,11 +518,11 @@ const Hero = () => {
               variants={itemVariants}
               className="text-xl sm:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto"
             >
-              L&apos;automatisation intelligente qui postule pour vous 24/7 sur{' '}
+              La fin de la galère pour les étudiants. L&apos;IA qui postule pour vous 24/7 sur{' '}
               <span className="font-semibold text-gray-900">LinkedIn</span>,{' '}
               <span className="font-semibold text-gray-900">Indeed</span> et{' '}
               <span className="font-semibold text-gray-900">
-                Welcome to the Jungle
+                Hello Work
               </span>
             </motion.p>
           </motion.div>
@@ -521,31 +568,83 @@ const Hero = () => {
             </motion.button>
           </motion.div>
 
-          {/* Trust Bar - Social Proof */}
+          {/* Trust Bar - Companies Marquee */}
           <motion.div
             variants={itemVariants}
-            className="pt-12 border-t border-gray-200 w-full max-w-4xl"
+            className="pt-12 border-t border-gray-200 w-full"
           >
             <div className="text-center">
-              <p className="text-sm font-medium text-gray-500 mb-6">
-                Rejoint par +1,247 étudiants de :
-              </p>
-              <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-10">
-                {['HEC Paris', 'ESSEC', 'ESCP', 'EM Lyon', 'EDHEC'].map(
-                  (school) => (
-                    <motion.div
-                      key={school}
-                      whileHover={{ scale: 1.05 }}
-                      className="grayscale hover:grayscale-0 transition-all duration-300 opacity-50 hover:opacity-100"
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">
+                Ils ont été recrutés chez :
+              </h3>
+
+              {/* Scrolling Marquee Container */}
+              <div className="relative overflow-hidden py-4">
+                {/* Gradient overlays for fade effect */}
+                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
+                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
+
+                {/* Marquee wrapper */}
+                <motion.div
+                  className="flex gap-16 items-center"
+                  animate={{
+                    x: [0, -1600]
+                  }}
+                  transition={{
+                    x: {
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      duration: 35,
+                      ease: "linear",
+                    },
+                  }}
+                >
+                  {/* First set of companies */}
+                  {[
+                    { name: 'Google', logo: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png' },
+                    { name: 'Microsoft', logo: 'https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31' },
+                    { name: 'Apple', logo: 'https://www.apple.com/ac/globalnav/7/en_US/images/be15095f-5a20-57d0-ad14-cf4c638e223a/globalnav_apple_image__b5er5ngrzxqq_large.svg' },
+                    { name: 'Amazon', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
+                    { name: 'Meta', logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg' },
+                    { name: 'Netflix', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg' },
+                    { name: 'Tesla', logo: 'https://upload.wikimedia.org/wikipedia/commons/b/bd/Tesla_Motors.svg' },
+                  ].map((company, index) => (
+                    <div
+                      key={`first-${company.name}-${index}`}
+                      className="flex-shrink-0 px-8 py-4 bg-white rounded-lg border border-gray-200 shadow-sm opacity-70 hover:opacity-100 hover:shadow-md transition-all duration-300"
                     >
-                      <div className="px-6 py-3 bg-gray-50 rounded-lg border border-gray-200">
-                        <span className="text-sm font-bold text-gray-700">
-                          {school}
-                        </span>
-                      </div>
-                    </motion.div>
-                  )
-                )}
+                      <img
+                        src={company.logo}
+                        alt={`${company.name} logo`}
+                        className="h-8 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+
+                  {/* Duplicate set for seamless loop */}
+                  {[
+                    { name: 'Google', logo: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png' },
+                    { name: 'Microsoft', logo: 'https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31' },
+                    { name: 'Apple', logo: 'https://www.apple.com/ac/globalnav/7/en_US/images/be15095f-5a20-57d0-ad14-cf4c638e223a/globalnav_apple_image__b5er5ngrzxqq_large.svg' },
+                    { name: 'Amazon', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
+                    { name: 'Meta', logo: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Meta_Platforms_Inc._logo.svg' },
+                    { name: 'Netflix', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg' },
+                    { name: 'Tesla', logo: 'https://upload.wikimedia.org/wikipedia/commons/b/bd/Tesla_Motors.svg' },
+                  ].map((company, index) => (
+                    <div
+                      key={`second-${company.name}-${index}`}
+                      className="flex-shrink-0 px-8 py-4 bg-white rounded-lg border border-gray-200 shadow-sm opacity-70 hover:opacity-100 hover:shadow-md transition-all duration-300"
+                    >
+                      <img
+                        src={company.logo}
+                        alt={`${company.name} logo`}
+                        className="h-8 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                        loading="lazy"
+                      />
+                    </div>
+                  ))}
+                </motion.div>
               </div>
             </div>
           </motion.div>

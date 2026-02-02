@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "ZenApply - Trouvez une alternance ou un stage grâce à l'IA",
-  description: "L'automatisation intelligente qui postule pour vous 24/7 sur LinkedIn, Indeed et Welcome to the Jungle. Trouvez votre alternance ou stage en moins de 30 jours.",
+  description: "L'automatisation intelligente qui postule pour vous 24/7 sur LinkedIn, Indeed et Hello Work. Trouvez votre alternance ou stage en moins de 30 jours.",
 };
 
 export default function RootLayout({
