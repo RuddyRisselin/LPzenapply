@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, CheckCircle2, Calendar, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const Hero = () => {
@@ -63,14 +63,6 @@ const Hero = () => {
     },
   };
 
-  const floatingAnimation = {
-    y: [-5, 5, -5],
-    transition: {
-      duration: 3,
-      repeat: Infinity,
-      ease: 'easeInOut' as const,
-    },
-  };
 
   return (
     <section className="relative min-h-screen w-full bg-gradient-to-b from-white via-pink-50/20 to-white overflow-hidden flex items-center">
@@ -495,72 +487,19 @@ const Hero = () => {
           >
             {/* Glassmorphism Container */}
             <div className="relative w-full h-full rounded-3xl overflow-hidden backdrop-blur-xl bg-white/60 border border-white/80 shadow-[0_20px_60px_rgba(255,105,180,0.15)] p-3">
-              {/* Video Placeholder */}
-              <div className="w-full h-full bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl flex items-center justify-center relative overflow-hidden group cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#FF69B4]/5 via-transparent to-[#FF69B4]/5" />
-
-                {/* Play Button */}
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="relative z-10 flex flex-col items-center gap-4"
+              {/* Video */}
+              <div className="w-full h-full rounded-2xl overflow-hidden">
+                <video
+                  className="w-full h-full object-cover"
+                  controls
+                  preload="metadata"
                 >
-                  <div className="w-24 h-24 rounded-full bg-[#FF69B4] flex items-center justify-center shadow-[0_10px_40px_rgba(255,105,180,0.4)] group-hover:shadow-[0_15px_60px_rgba(255,105,180,0.6)] transition-all duration-300">
-                    <Play className="w-12 h-12 text-white ml-2" fill="white" />
-                  </div>
-                  <p className="text-gray-700 font-semibold text-lg">
-                    Découvrir en 60 secondes
-                  </p>
-                </motion.div>
+                  <source src="/video/VSL.mp4" type="video/mp4" />
+                  Votre navigateur ne supporte pas la lecture de vidéos.
+                </video>
               </div>
             </div>
 
-            {/* Floating UI Elements around video */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 20 }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                y: 0,
-                transition: { duration: 0.5, delay: 1.2 }
-              }}
-              className="absolute -left-4 top-1/4 sm:-left-8 bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] px-4 py-3 flex items-center gap-3 border border-gray-100"
-            >
-              <motion.div animate={floatingAnimation}>
-                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                  <CheckCircle2 className="w-6 h-6 text-green-600" />
-                </div>
-              </motion.div>
-              <div className="text-left">
-                <p className="text-sm font-semibold text-gray-900">
-                  Candidature envoyée
-                </p>
-                <p className="text-xs text-gray-500">Il y a 2 minutes</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 20 }}
-              animate={{
-                opacity: 1,
-                scale: 1,
-                y: 0,
-                transition: { duration: 0.5, delay: 1.5 }
-              }}
-              className="absolute -right-4 top-1/3 sm:-right-8 bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] px-4 py-3 flex items-center gap-3 border border-gray-100"
-            >
-              <motion.div animate={floatingAnimation}>
-                <div className="w-12 h-12 rounded-full bg-[#FF69B4]/10 flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-6 h-6 text-[#FF69B4]" />
-                </div>
-              </motion.div>
-              <div className="text-left">
-                <p className="text-sm font-semibold text-gray-900">
-                  Nouvel entretien
-                </p>
-                <p className="text-xs text-gray-500">Dans 3 jours</p>
-              </div>
-            </motion.div>
           </motion.div>
 
           {/* CTA Section - Prominent Below Video */}
