@@ -541,7 +541,7 @@ const Hero = () => {
                   controls
                   preload="metadata"
                 >
-                  <source src="/video/VSL.mp4" type="video/mp4" />
+                  <source src="/video/VSL.mov" type="video/mp4" />
                   Votre navigateur ne supporte pas la lecture de vidéos.
                 </video>
               </div>

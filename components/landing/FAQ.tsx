@@ -7,48 +7,38 @@ import { Plus, Minus } from 'lucide-react';
 const faqData = [
   {
     id: 1,
-    question: 'Comment ZenApply.io fonctionne exactement ?',
-    answer: "L'IA analyse votre profil, identifie les offres pertinentes et personnalise chaque candidature pour maximiser vos chances de succès.",
+    question: 'Est-ce que les entreprises voient que les candidatures sont automatisées ?',
+    answer: "Non. Les entreprises ne voient pas que les candidatures spontanées sont automatisées. Les candidatures spontanées envoyées via ZenApply.io apparaissent comme des candidatures classiques, et les candidatures spontanées sont envoyées depuis ta propre boîte Gmail, sans mention d'automatisation.",
   },
   {
     id: 2,
-    question: "Est-ce légal d'automatiser ses candidatures ?",
-    answer: "Oui, totalement. ZenApply.io est un outil d'assistance qui respecte les conditions d'utilisation des plateformes et la conformité RGPD.",
+    question: 'Est-ce que les candidatures automatiques permettent d\'avoir plus de réponses ?',
+    answer: 'Oui. Les candidatures automatiques permettent de postuler avec plus de volume. Candidater automatiquement augmente donc les chances d\'obtenir des réponses par rapport à des candidatures envoyées une par une. ZenApply.io permet de candidater automatiquement sur LinkedIn, Indeed et HelloWork.',
   },
   {
     id: 3,
-    question: 'Sur quelles plateformes ZenApply.io postule ?',
-    answer: 'Nous couvrons les leaders du marché : LinkedIn, Indeed et HelloWork.',
+    question: 'Peut-on envoyer des candidatures spontanées par mail automatiquement ?',
+    answer: 'Oui. Avec ZenApply.io, tu peux envoyer des candidatures spontanées par mail automatiquement : les messages sont générés depuis l\'application, vérifiés par toi, puis envoyés depuis ta propre boîte Gmail en un clic.',
   },
   {
     id: 4,
-    question: "L'IA personnalise-t-elle vraiment chaque lettre ?",
-    answer: 'Absolument. Chaque lettre est rédigée en fonction de la description du poste et de vos expériences spécifiques.',
+    question: 'Peut-on vérifier et modifier une candidature spontanée avant de l\'envoyer ?',
+    answer: 'Oui. Avant chaque envoi, tu peux vérifier et modifier la candidature spontanée générée par ZenApply.io, afin de t\'assurer que le message te correspond parfaitement.',
   },
   {
     id: 5,
-    question: 'Puis-je annuler mon abonnement à tout moment ?',
-    answer: 'Oui, la résiliation se fait en un clic depuis votre dashboard, sans engagement de durée.',
+    question: 'Comment suivre toutes ses candidatures au même endroit ?',
+    answer: 'ZenApply.io permet de suivre toutes ses candidatures au même endroit, dans un tableau de suivi centralisé.',
   },
   {
     id: 6,
-    question: 'Mes données sont-elles sécurisées ?',
-    answer: 'Vos données sont protégées par certificat SSL et hébergées en Europe sur des serveurs Hostinger sécurisés.',
+    question: 'Peut-on annuler son abonnement ZenApply.io à tout moment ?',
+    answer: 'Oui. L\'abonnement ZenApply.io peut être annulé à tout moment, sans engagement et directement depuis ton espace personnel et sans frais.',
   },
   {
     id: 7,
-    question: "Puis-je vérifier les candidatures avant l'envoi ?",
-    answer: 'Oui, le mode "Review" vous permet de valider chaque lettre de motivation avant qu\'elle ne soit expédiée.',
-  },
-  {
-    id: 8,
-    question: 'Quel est le délai moyen pour trouver une alternance ?',
-    answer: "Nos utilisateurs trouvent leur contrat en 18 jours en moyenne grâce à la puissance de l'automatisation.",
-  },
-  {
-    id: 9,
-    question: 'Comment contacter le support en cas de besoin ?',
-    answer: 'Notre équipe est disponible par email de 9h à 17h, tous les jours sauf le week-end.',
+    question: 'Combien de candidatures faut-il envoyer pour obtenir des réponses ?',
+    answer: 'Il n\'existe pas de nombre exact mais utiliser un outil pour candidater automatiquement comme ZenApply.io augmente grandement vos chances d\'obtenir des réponses. ZenApply.io couvre un maximum de sites comme LinkedIn, HelloWork, Indeed et permet également les candidatures spontanées et les relances automatiques par mail.',
   },
 ];
 
