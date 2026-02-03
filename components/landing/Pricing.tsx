@@ -249,7 +249,7 @@ export default function Pricing() {
               <div
                 className={`relative h-full rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 transition-all duration-300 ${
                   plan.popular
-                    ? 'bg-zen-rose text-white shadow-2xl hover:shadow-zen-rose/30'
+                    ? 'bg-gradient-to-br from-zen-rose via-zen-rose to-pink-200 text-white shadow-2xl hover:shadow-zen-rose/30'
                     : 'bg-white border border-gray-200 shadow-lg hover:shadow-xl'
                 } ${plan.disabled ? 'opacity-60' : ''}`}
               >
