@@ -2,6 +2,8 @@ import Hero from "@/components/landing/Hero";
 import ProblemSection from "@/components/landing/ProblemSection";
 import SolutionTimeline from "@/components/landing/SolutionTimeline";
 import FeaturesGrid from "@/components/landing/FeaturesGrid";
+import Testimonials from "@/components/landing/Testimonials";
+import Pricing from "@/components/landing/Pricing";
 
 export default function Home() {
   return (
@@ -10,6 +12,8 @@ export default function Home() {
       <ProblemSection />
       <SolutionTimeline />
       <FeaturesGrid />
+      <Testimonials />
+      <Pricing />
     </div>
   );
 }

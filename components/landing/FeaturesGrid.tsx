@@ -121,7 +121,7 @@ function FeatureCard({ feature, index }: FeatureCardProps) {
       className="relative w-full max-w-4xl mx-auto"
     >
       {/* Glassmorphism card with backdrop blur */}
-      <div className="relative bg-white/90 backdrop-blur-xl rounded-[32px] border border-zen-rose/10 shadow-2xl p-6 sm:p-10 h-full">
+      <div className="relative bg-white/90 backdrop-blur-xl rounded-[32px] border border-zen-rose/10 shadow-2xl p-5 sm:p-10 h-full">
         {/* Mouse-following radial gradient shimmer */}
         <motion.div
           className="pointer-events-none absolute inset-0 rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -133,14 +133,14 @@ function FeatureCard({ feature, index }: FeatureCardProps) {
         {/* Content */}
         <div className="relative z-10 flex flex-col h-full">
           {/* Title Section */}
-          <div className="text-center mb-6">
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
+          <div className="text-center mb-4 sm:mb-6 pr-12 sm:pr-0">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">
               {feature.title}
             </h3>
           </div>
 
           {/* Screenshot or Platform Logos */}
-          <div className="mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100/50 border border-gray-200/30 backdrop-blur-sm h-[240px]">
+          <div className="mb-4 sm:mb-6 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100/50 border border-gray-200/30 backdrop-blur-sm h-[200px] sm:h-[240px]">
             {index === 0 ? (
               // Platform logos for Auto-Apply Multi-Plateformes
               <div className="w-full h-full flex items-center justify-center gap-8 px-6">
@@ -189,13 +189,13 @@ function FeatureCard({ feature, index }: FeatureCardProps) {
           </div>
 
           {/* Feature Points */}
-          <ul className="space-y-3">
+          <ul className="space-y-2 sm:space-y-3">
             {feature.points.map((point, pointIndex) => (
               <li
                 key={pointIndex}
-                className="flex items-start gap-3 text-sm sm:text-base text-zen-gray"
+                className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-zen-gray"
               >
-                <Check className="w-5 h-5 text-zen-rose flex-shrink-0 mt-0.5" strokeWidth={2.5} />
+                <Check className="w-4 h-4 sm:w-5 sm:h-5 text-zen-rose flex-shrink-0 mt-0.5" strokeWidth={2.5} />
                 <span className="leading-relaxed">{point}</span>
               </li>
             ))}
@@ -203,8 +203,8 @@ function FeatureCard({ feature, index }: FeatureCardProps) {
         </div>
 
         {/* Card Number Indicator */}
-        <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-gradient-to-br from-zen-rose to-pink-500 flex items-center justify-center shadow-lg">
-          <span className="text-lg font-bold text-white">{index + 1}</span>
+        <div className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-zen-rose to-pink-500 flex items-center justify-center shadow-lg">
+          <span className="text-base sm:text-lg font-bold text-white">{index + 1}</span>
         </div>
 
         {/* Subtle shimmer border accent */}
@@ -251,10 +251,11 @@ export default function FeaturesGrid() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: 'top top',
+          start: 'top -20%',
           end: () => `+=${window.innerHeight * cards.length * 1.2}`,
           scrub: 0.8,
           pin: true,
+          pinSpacing: true,
           anticipatePin: 1,
           snap: {
             snapTo: 1 / (cards.length - 1),
@@ -321,7 +322,7 @@ export default function FeaturesGrid() {
       </div>
 
       {/* Header with increased vertical spacing */}
-      <div className="relative pt-20 pb-32 px-4 sm:px-6 lg:px-8 z-20 pointer-events-none">
+      <div className="relative pt-16 sm:pt-20 pb-20 sm:pb-32 px-4 sm:px-6 lg:px-8 z-20 pointer-events-none">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             Ce que ZenApply fait pour vous
@@ -335,10 +336,10 @@ export default function FeaturesGrid() {
       {/* Stacked Cards Container - Large and Centered */}
       <div
         ref={cardsContainerRef}
-        className="relative z-10 flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8"
+        className="relative z-10 flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-8"
         style={{ opacity: mounted ? 1 : 0 }}
       >
-        <div className="relative w-full max-w-4xl mx-auto h-[500px] sm:h-[550px]">
+        <div className="relative w-full max-w-4xl mx-auto h-[650px] sm:h-[550px]">
           {features.map((feature, index) => (
             <div
               key={index}
@@ -350,13 +351,6 @@ export default function FeaturesGrid() {
         </div>
       </div>
 
-      {/* Minimal Scroll Indicator */}
-      <div className="relative bottom-0 pb-12 z-20 text-center pointer-events-none">
-        <p className="text-sm text-zen-gray/70 mb-3 tracking-wide">Scroll pour découvrir</p>
-        <div className="w-6 h-10 border-2 border-zen-gray/20 rounded-full mx-auto flex items-start justify-center p-2">
-          <div className="w-1.5 h-3 bg-zen-rose rounded-full animate-bounce" />
-        </div>
-      </div>
     </section>
   );
 }
