@@ -4,7 +4,21 @@ import { useState } from 'react';
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import { Check, X } from 'lucide-react';
 
-const pricingPlans = {
+type PricingPlan = {
+  id: number;
+  name: string;
+  price: string;
+  trial?: string;
+  originalPrice?: string;
+  description: string;
+  features: string[];
+  cta: string;
+  popular: boolean;
+  disabled: boolean;
+  comingSoon?: boolean;
+};
+
+const pricingPlans: { monthly: PricingPlan[]; quarterly: PricingPlan[] } = {
   monthly: [
     {
       id: 1,
@@ -120,28 +134,28 @@ export default function Pricing() {
   const plans = pricingPlans[billingPeriod];
 
   return (
-    <section className="relative bg-gradient-to-b from-white via-gray-50/30 to-white py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative bg-gradient-to-b from-white via-gray-50/30 to-white py-12 sm:py-16 md:py-20 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-x-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-zen-rose/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-100/10 rounded-full blur-3xl" />
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 bg-zen-rose/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 bg-purple-100/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative max-w-full lg:max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
             Nos offres pour candidater automatiquement
           </h2>
-          <p className="text-lg text-zen-gray mb-8">
+          <p className="text-base sm:text-lg text-zen-gray mb-6 sm:mb-8">
             Sans engagement • essai gratuit
           </p>
 
           {/* Billing Toggle */}
-          <div className="inline-flex items-center gap-3 bg-white rounded-full p-1.5 shadow-sm border border-gray-200">
+          <div className="inline-flex items-center gap-2 sm:gap-3 bg-white rounded-full p-1 sm:p-1.5 shadow-sm border border-gray-200">
             <button
               onClick={() => setBillingPeriod('monthly')}
-              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+              className={`px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 ${
                 billingPeriod === 'monthly'
                   ? 'bg-zen-rose text-white shadow-md'
                   : 'text-zen-gray hover:text-gray-900'
@@ -151,7 +165,7 @@ export default function Pricing() {
             </button>
             <button
               onClick={() => setBillingPeriod('quarterly')}
-              className={`px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex items-center gap-2 ${
+              className={`px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center gap-1.5 sm:gap-2 ${
                 billingPeriod === 'quarterly'
                   ? 'bg-zen-rose text-white shadow-md'
                   : 'text-zen-gray hover:text-gray-900'
@@ -166,7 +180,7 @@ export default function Pricing() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.id}
@@ -233,7 +247,7 @@ export default function Pricing() {
 
               {/* Card */}
               <div
-                className={`relative h-full rounded-3xl p-8 transition-all duration-300 ${
+                className={`relative h-full rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 transition-all duration-300 ${
                   plan.popular
                     ? 'bg-zen-rose text-white shadow-2xl hover:shadow-zen-rose/30'
                     : 'bg-white border border-gray-200 shadow-lg hover:shadow-xl'
@@ -241,7 +255,7 @@ export default function Pricing() {
               >
                 {/* Plan Name */}
                 <h3
-                  className={`text-2xl font-bold mb-2 ${
+                  className={`text-xl sm:text-2xl font-bold mb-2 ${
                     plan.popular ? 'text-white' : 'text-gray-900'
                   }`}
                 >
@@ -250,7 +264,7 @@ export default function Pricing() {
 
                 {/* Description */}
                 <p
-                  className={`text-sm mb-6 ${
+                  className={`text-xs sm:text-sm mb-4 sm:mb-6 ${
                     plan.popular ? 'text-white/90' : 'text-zen-gray'
                   }`}
                 >
@@ -258,26 +272,26 @@ export default function Pricing() {
                 </p>
 
                 {/* Price */}
-                <div className="mb-6">
+                <div className="mb-4 sm:mb-6">
                   {plan.trial && (
                     <p
-                      className={`text-sm mb-1 ${
+                      className={`text-xs sm:text-sm mb-1 ${
                         plan.popular ? 'text-white/80' : 'text-zen-gray'
                       }`}
                     >
                       {plan.trial}
                     </p>
                   )}
-                  <div className="flex items-baseline gap-2">
+                  <div className="flex items-baseline gap-1 sm:gap-2">
                     <span
-                      className={`text-4xl font-bold ${
+                      className={`text-3xl sm:text-4xl font-bold ${
                         plan.popular ? 'text-white' : 'text-gray-900'
                       }`}
                     >
                       {plan.price}€
                     </span>
                     <span
-                      className={`text-lg ${
+                      className={`text-base sm:text-lg ${
                         plan.popular ? 'text-white/80' : 'text-zen-gray'
                       }`}
                     >
@@ -298,7 +312,7 @@ export default function Pricing() {
                 {/* CTA Button */}
                 <button
                   disabled={plan.disabled}
-                  className={`w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 mb-8 ${
+                  className={`w-full py-2.5 sm:py-3 px-4 sm:px-6 rounded-xl text-sm sm:text-base font-semibold transition-all duration-300 mb-6 sm:mb-8 ${
                     plan.disabled
                       ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                       : plan.popular
@@ -310,17 +324,17 @@ export default function Pricing() {
                 </button>
 
                 {/* Features */}
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3">
                   {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
+                    <li key={i} className="flex items-start gap-2 sm:gap-3">
                       <Check
-                        className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
+                        className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5 ${
                           plan.popular ? 'text-white' : 'text-zen-rose'
                         }`}
                         strokeWidth={2.5}
                       />
                       <span
-                        className={`text-sm ${
+                        className={`text-xs sm:text-sm ${
                           plan.popular ? 'text-white/90' : 'text-zen-gray'
                         }`}
                       >
@@ -335,20 +349,20 @@ export default function Pricing() {
         </div>
 
         {/* Trust Signals */}
-        <div className="mt-12 text-center">
-          <p className="text-sm text-zen-gray flex items-center justify-center gap-4 flex-wrap">
-            <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-zen-rose" />
+        <div className="mt-8 sm:mt-12 text-center">
+          <p className="text-xs sm:text-sm text-zen-gray flex items-center justify-center gap-3 sm:gap-4 flex-wrap px-4">
+            <span className="flex items-center gap-1.5 sm:gap-2">
+              <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-zen-rose" />
               Annulez à tout moment
             </span>
             <span className="hidden sm:inline text-zen-gray/30">•</span>
-            <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-zen-rose" />
+            <span className="flex items-center gap-1.5 sm:gap-2">
+              <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-zen-rose" />
               Paiement sécurisé par Stripe
             </span>
             <span className="hidden sm:inline text-zen-gray/30">•</span>
-            <span className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-zen-rose" />
+            <span className="flex items-center gap-1.5 sm:gap-2">
+              <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-zen-rose" />
               Satisfaction garantie
             </span>
           </p>

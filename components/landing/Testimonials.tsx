@@ -8,21 +8,21 @@ const testimonials = [
     id: 1,
     name: 'Yann',
     school: 'Développement - École 42',
-    text: 'J\'ai trouvé mon stage de 6 mois en 3 semaines grâce à ZenApply. L\'automatisation m\'a permis d\'envoyer plus de 120 candidatures sans y passer mes journées. Les relances automatiques ont fait la différence, plusieurs recruteurs m\'ont recontacté après la relance. Je recommande à tous les étudiants de 42.',
+    text: 'J\'ai trouvé mon stage de 6 mois en 3 semaines grâce à ZenApply.io. L\'automatisation m\'a permis d\'envoyer plus de 120 candidatures sans y passer mes journées. Les relances automatiques ont fait la différence, plusieurs recruteurs m\'ont recontacté après la relance. Je recommande à tous les étudiants de 42.',
     photo: '/photos/Yann.jpeg',
   },
   {
     id: 2,
     name: 'Matthieu',
     school: 'Informatique - EFREI Paris',
-    text: 'ZenApply m\'a sauvé pendant ma recherche d\'alternance. En parallèle de mes cours, impossible de candidater manuellement partout. La plateforme a géré les candidatures spontanées et j\'ai décroché mon alternance après seulement 4 semaines de recherche active. Le dashboard m\'a aidé à suivre mes performances en temps réel.',
+    text: 'ZenApply.io m\'a sauvé pendant ma recherche d\'alternance. En parallèle de mes cours, impossible de candidater manuellement partout. La plateforme a géré les candidatures spontanées et j\'ai décroché mon alternance après seulement 4 semaines de recherche active. Le dashboard m\'a aidé à suivre mes performances en temps réel.',
     photo: '/photos/mathieu.webp',
   },
   {
     id: 3,
     name: 'Corentin',
     school: 'Design - BUT MMI',
-    text: 'En tant que designer, je cherchais une alternance créative et ZenApply m\'a aidé à cibler les bonnes entreprises. Les relances automatiques ont boosté mon taux de réponse de 35%. J\'ai pu me concentrer sur mon portfolio pendant que ZenApply gérait mes candidatures. J\'ai signé mon alternance en design après 5 semaines.',
+    text: 'En tant que designer, je cherchais une alternance créative et ZenApply.io m\'a aidé à cibler les bonnes entreprises. Les relances automatiques ont boosté mon taux de réponse de 35%. J\'ai pu me concentrer sur mon portfolio pendant que ZenApply.io gérait mes candidatures. J\'ai signé mon alternance en design après 5 semaines.',
     photo: '/photos/Corentin.jpeg',
   },
 ];
@@ -50,27 +50,27 @@ const cardVariants = {
     scale: 1,
     transition: {
       duration: 0.6,
-      ease: [0.25, 0.46, 0.45, 0.94],
+      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
     },
   },
 };
 
 export default function Testimonials() {
   return (
-    <section className="relative bg-white py-20 sm:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative bg-white py-12 sm:py-16 md:py-20 lg:py-28 px-4 sm:px-6 lg:px-8 overflow-x-hidden">
       {/* Subtle Background Gradient */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-zen-rose/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 left-1/4 w-[500px] h-[500px] bg-purple-100/10 rounded-full blur-3xl" />
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 bg-zen-rose/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 bg-purple-100/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative max-w-full lg:max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16 sm:mb-20">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
             Ils ont trouvé leur stage ou alternance
           </h2>
-          <p className="text-lg sm:text-xl text-zen-gray max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-zen-gray max-w-3xl mx-auto px-4">
             Rejoignez les +1000 étudiants qui ont automatisé leur succès.
           </p>
         </div>
@@ -81,7 +81,7 @@ export default function Testimonials() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {testimonials.map((testimonial, index) => (
             <motion.div
@@ -93,26 +93,26 @@ export default function Testimonials() {
               }}
               className="h-full"
             >
-              <div className="relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 p-6 sm:p-8 h-full flex flex-col">
+              <div className="relative bg-white rounded-xl sm:rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 p-4 sm:p-6 md:p-8 h-full flex flex-col">
                 {/* Stars */}
-                <div className="flex gap-1 mb-4">
+                <div className="flex gap-0.5 sm:gap-1 mb-3 sm:mb-4">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-5 h-5 fill-zen-rose text-zen-rose"
+                      className="w-4 h-4 sm:w-5 sm:h-5 fill-zen-rose text-zen-rose"
                     />
                   ))}
                 </div>
 
                 {/* Testimonial Text */}
-                <p className="text-zen-gray text-base leading-relaxed mb-6 flex-grow">
+                <p className="text-zen-gray text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 flex-grow">
                   {testimonial.text}
                 </p>
 
                 {/* User Info */}
-                <div className="flex items-center gap-4 mt-auto">
+                <div className="flex items-center gap-3 sm:gap-4 mt-auto">
                   {/* Profile Photo */}
-                  <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-zen-rose/10">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden flex-shrink-0 border-2 border-zen-rose/10">
                     <img
                       src={testimonial.photo}
                       alt={testimonial.name}
@@ -122,13 +122,13 @@ export default function Testimonials() {
 
                   {/* Name and School */}
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
-                      <h4 className="font-bold text-gray-900">
+                    <div className="flex items-center gap-1.5 sm:gap-2 mb-0.5 sm:mb-1">
+                      <h4 className="font-bold text-sm sm:text-base text-gray-900">
                         {testimonial.name}
                       </h4>
-                      <ShieldCheck className="w-4 h-4 text-zen-rose flex-shrink-0" />
+                      <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-zen-rose flex-shrink-0" />
                     </div>
-                    <p className="text-sm text-zen-gray">
+                    <p className="text-xs sm:text-sm text-zen-gray">
                       {testimonial.school}
                     </p>
                   </div>

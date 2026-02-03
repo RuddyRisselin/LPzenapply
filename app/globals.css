@@ -28,6 +28,13 @@
   }
 }
 
+/* Prevent horizontal scroll completely */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  position: relative;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -39,4 +46,16 @@ body {
 /* Smooth scroll behavior */
 html {
   scroll-behavior: smooth;
+}
+
+/* Ensure all containers respect viewport */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent any element from causing horizontal overflow */
+#__next,
+[data-reactroot] {
+  overflow-x: hidden;
+  max-width: 100vw;
 }

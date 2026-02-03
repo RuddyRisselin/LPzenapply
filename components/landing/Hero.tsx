@@ -65,7 +65,7 @@ const Hero = () => {
 
 
   return (
-    <section className="relative min-h-screen w-full bg-gradient-to-b from-white via-pink-50/20 to-white overflow-hidden flex items-center">
+    <section className="relative min-h-screen w-full max-w-full bg-gradient-to-b from-white via-pink-50/20 to-white overflow-hidden flex items-center pt-20">
       {/* Background Decorative Assets - Modern SaaS/AI Style */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Large Gradient Orbs */}
@@ -82,7 +82,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="absolute top-10 left-10 w-[600px] h-[600px] bg-gradient-to-br from-[#FF69B4]/30 via-[#FF69B4]/10 to-transparent rounded-full blur-3xl"
+          className="absolute top-10 left-10 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[600px] xl:h-[600px] bg-gradient-to-br from-[#FF69B4]/30 via-[#FF69B4]/10 to-transparent rounded-full blur-3xl"
         />
 
         <motion.div
@@ -98,7 +98,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="absolute top-20 right-10 w-[700px] h-[700px] bg-gradient-to-bl from-[#FF1493]/30 via-[#FF69B4]/10 to-transparent rounded-full blur-3xl"
+          className="absolute top-20 right-10 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[700px] xl:h-[700px] bg-gradient-to-bl from-[#FF1493]/30 via-[#FF69B4]/10 to-transparent rounded-full blur-3xl"
         />
 
         {/* Floating Geometric Shapes */}
@@ -421,7 +421,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: -200 }}
           animate={{ opacity: 0.6, x: 0 }}
           transition={{ duration: 1.5, delay: 0.3 }}
-          className="absolute top-10 sm:top-16 md:top-20 -left-20 sm:-left-30 md:-left-40 w-[300px] sm:w-[450px] md:w-[550px] lg:w-[600px] h-[200px] sm:h-[300px] md:h-[350px] lg:h-[400px] bg-gradient-to-br from-[#FF69B4]/10 via-transparent to-transparent rotate-45 blur-xl sm:blur-2xl"
+          className="absolute top-10 sm:top-16 md:top-20 left-0 xl:-left-20 w-[300px] sm:w-[450px] md:w-[550px] lg:w-[600px] h-[200px] sm:h-[300px] md:h-[350px] lg:h-[400px] bg-gradient-to-br from-[#FF69B4]/10 via-transparent to-transparent rotate-45 blur-xl sm:blur-2xl"
         />
 
         {/* Right diagonal light beam */}
@@ -429,7 +429,7 @@ const Hero = () => {
           initial={{ opacity: 0, x: 200 }}
           animate={{ opacity: 0.6, x: 0 }}
           transition={{ duration: 1.5, delay: 0.3 }}
-          className="absolute top-10 sm:top-16 md:top-20 -right-20 sm:-right-30 md:-right-40 w-[300px] sm:w-[450px] md:w-[550px] lg:w-[600px] h-[200px] sm:h-[300px] md:h-[350px] lg:h-[400px] bg-gradient-to-bl from-[#FF69B4]/10 via-transparent to-transparent -rotate-45 blur-xl sm:blur-2xl"
+          className="absolute top-10 sm:top-16 md:top-20 right-0 xl:-right-20 w-[300px] sm:w-[450px] md:w-[550px] lg:w-[600px] h-[200px] sm:h-[300px] md:h-[350px] lg:h-[400px] bg-gradient-to-bl from-[#FF69B4]/10 via-transparent to-transparent -rotate-45 blur-xl sm:blur-2xl"
         />
 
         {/* Center glow behind title */}
@@ -442,28 +442,28 @@ const Hero = () => {
       </div>
 
       <motion.div
-        className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-20 sm:py-24 lg:py-32 w-full"
+        className="relative mx-auto max-w-full w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-20"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Centered Content Layout */}
-        <div className="flex flex-col items-center text-center space-y-12">
+        <div className="flex flex-col items-center text-center space-y-6 sm:space-y-8 lg:space-y-12">
           {/* Nouveauté Badge */}
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#FF69B4]/10 to-[#FF1493]/10 border border-[#FF69B4]/30 rounded-full"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-[#FF69B4]/10 to-[#FF1493]/10 border border-[#FF69B4]/30 rounded-full"
           >
             <span className="inline-block w-2 h-2 bg-[#FF69B4] rounded-full animate-pulse"></span>
-            <span className="text-sm font-semibold bg-gradient-to-r from-[#FF69B4] to-[#FF1493] bg-clip-text text-transparent">
+            <span className="text-xs sm:text-sm font-semibold bg-gradient-to-r from-[#FF69B4] to-[#FF1493] bg-clip-text text-transparent">
               Nouveauté : fonctionne avec Indeed et HelloWork
             </span>
           </motion.div>
 
           {/* Headline - Centered */}
-          <motion.div variants={itemVariants} className="space-y-6 max-w-5xl px-4 w-full">
+          <motion.div variants={itemVariants} className="space-y-4 sm:space-y-6 max-w-full lg:max-w-5xl px-2 sm:px-4 w-full">
             <motion.h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.2] flex flex-col items-center"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.2] flex flex-col items-center"
             >
               {/* Mobile: 3 lines, Desktop: 2 lines */}
               {/* Desktop version - 2 lines */}
@@ -516,7 +516,7 @@ const Hero = () => {
             {/* Sub-headline */}
             <motion.p
               variants={itemVariants}
-              className="text-xl sm:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 leading-relaxed max-w-full lg:max-w-3xl mx-auto px-2"
             >
               La fin de la galère pour les étudiants. L&apos;IA qui postule pour vous 24/7 sur{' '}
               <span className="font-semibold text-gray-900">LinkedIn</span>,{' '}
@@ -530,12 +530,12 @@ const Hero = () => {
           {/* Video Container with Glassmorphism - Below Title */}
           <motion.div
             variants={itemVariants}
-            className="relative w-full max-w-4xl aspect-video"
+            className="relative w-full max-w-full lg:max-w-4xl aspect-video px-2 sm:px-4"
           >
             {/* Glassmorphism Container */}
-            <div className="relative w-full h-full rounded-3xl overflow-hidden backdrop-blur-xl bg-white/60 border border-white/80 shadow-[0_20px_60px_rgba(255,105,180,0.15)] p-3">
+            <div className="relative w-full h-full rounded-2xl sm:rounded-3xl overflow-hidden backdrop-blur-xl bg-white/60 border border-white/80 shadow-[0_10px_30px_rgba(255,105,180,0.15)] sm:shadow-[0_20px_60px_rgba(255,105,180,0.15)] p-2 sm:p-3">
               {/* Video */}
-              <div className="w-full h-full rounded-2xl overflow-hidden">
+              <div className="w-full h-full rounded-xl sm:rounded-2xl overflow-hidden">
                 <video
                   className="w-full h-full object-cover"
                   controls
@@ -552,16 +552,16 @@ const Hero = () => {
           {/* CTA Section - Prominent Below Video */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center gap-4 pt-4"
+            className="flex flex-col sm:flex-row items-center gap-4 pt-2 sm:pt-4 px-4"
           >
             {/* Primary CTA - Extra Prominent */}
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
-              className="group relative px-10 py-5 bg-[#FF69B4] text-white font-bold rounded-full text-xl shadow-[0_20px_60px_rgba(255,105,180,0.3)] hover:shadow-[0_25px_80px_rgba(255,105,180,0.5)] transition-all duration-300 flex items-center gap-3"
+              className="group relative px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 bg-[#FF69B4] text-white font-bold rounded-full text-base sm:text-lg md:text-xl shadow-[0_10px_30px_rgba(255,105,180,0.3)] sm:shadow-[0_20px_60px_rgba(255,105,180,0.3)] hover:shadow-[0_15px_40px_rgba(255,105,180,0.5)] sm:hover:shadow-[0_25px_80px_rgba(255,105,180,0.5)] transition-all duration-300 flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center"
             >
               Démarrer Gratuitement
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform" />
               <motion.div
                 className="absolute inset-0 rounded-full bg-gradient-to-r from-[#FF1493] to-[#FF69B4] opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
               />
@@ -571,22 +571,22 @@ const Hero = () => {
           {/* Trust Bar - Companies Marquee */}
           <motion.div
             variants={itemVariants}
-            className="pt-12 border-t border-gray-200 w-full"
+            className="pt-8 sm:pt-12 border-t border-gray-200 w-full"
           >
             <div className="text-center">
-              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 px-4">
                 Ils ont été recrutés chez :
               </h3>
 
               {/* Scrolling Marquee Container */}
-              <div className="relative overflow-hidden py-4">
+              <div className="relative overflow-hidden py-2 sm:py-4">
                 {/* Gradient overlays for fade effect */}
-                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
-                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
+                <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-white to-transparent z-10" />
+                <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-white to-transparent z-10" />
 
                 {/* Marquee wrapper */}
                 <motion.div
-                  className="flex gap-16 items-center"
+                  className="flex gap-8 sm:gap-12 md:gap-16 items-center"
                   animate={{
                     x: [0, -1600]
                   }}
@@ -611,12 +611,12 @@ const Hero = () => {
                   ].map((company, index) => (
                     <div
                       key={`first-${company.name}-${index}`}
-                      className="flex-shrink-0 px-8 py-4 bg-white rounded-lg border border-gray-200 shadow-sm opacity-70 hover:opacity-100 hover:shadow-md transition-all duration-300"
+                      className="flex-shrink-0 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-white rounded-lg border border-gray-200 shadow-sm opacity-70 hover:opacity-100 hover:shadow-md transition-all duration-300"
                     >
                       <img
                         src={company.logo}
                         alt={`${company.name} logo`}
-                        className="h-8 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                        className="h-6 sm:h-7 md:h-8 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
                         loading="lazy"
                       />
                     </div>
@@ -634,12 +634,12 @@ const Hero = () => {
                   ].map((company, index) => (
                     <div
                       key={`second-${company.name}-${index}`}
-                      className="flex-shrink-0 px-8 py-4 bg-white rounded-lg border border-gray-200 shadow-sm opacity-70 hover:opacity-100 hover:shadow-md transition-all duration-300"
+                      className="flex-shrink-0 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-white rounded-lg border border-gray-200 shadow-sm opacity-70 hover:opacity-100 hover:shadow-md transition-all duration-300"
                     >
                       <img
                         src={company.logo}
                         alt={`${company.name} logo`}
-                        className="h-8 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                        className="h-6 sm:h-7 md:h-8 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
                         loading="lazy"
                       />
                     </div>
